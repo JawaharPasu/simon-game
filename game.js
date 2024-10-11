@@ -8,7 +8,7 @@ function nextSequence () {
     userClickedPattern = [];
     var randomChosencolor = buttonColors[Math.floor(Math.random()*4)];
     gamePattern.push(randomChosencolor);
-    $("#"+randomChosencolor).fadeOut(100).fadeIn(100);
+    $("#"+randomChosencolor).fadeIn(200).fadeOut(200).fadeIn(200);
     playSound(randomChosencolor);
     level++;
 }
@@ -22,6 +22,10 @@ $(".btn").on("click", function() {
 });
 
 $(document).on("keypress", function () {    
+    nextSequence();
+});
+
+$("h1").on("click", function () {
     nextSequence();
 });
 
@@ -49,10 +53,10 @@ function checkAnswer(currentLevel) {
             gamePattern = [];
             userClickedPattern = [];
             level = 0;
-            $("h1").text("Game over, press any key to restart");
+            $("h1").text("Game over, press any key or here to restart");
             return;
         }
     }
     console.log("game complete");
-    setTimeout(nextSequence(), 2000);
+    setTimeout(nextSequence(), 5000);
 }
